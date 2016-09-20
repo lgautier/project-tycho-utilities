@@ -16,8 +16,16 @@
 
 import csv, gzip, sqlite3, os, sys
 
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-o',
+                   required=True,
+                   help='Output file')
+args = parser.parse_args()
+
 input_filename = 'ProjectTycho_Level2_v1.1.0.csv.gz'
-output_filename = 'tycho.db'
+output_filename = args.o
 
 print('Creating database in %s' % output_filename)
 

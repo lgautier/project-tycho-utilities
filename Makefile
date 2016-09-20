@@ -1,6 +1,6 @@
-BASENAME=ProjectTycho_Level2_v1.1.0
-BASEURL=http://www.healthdata.gov/sites/default/files
-DBNAME=tycho.db
+BASENAME = ProjectTycho_Level2_v1.1.0
+BASEURL = http://www.healthdata.gov/sites/default/files
+DBNAME ?= tycho.db
 
 %_0.zip :
 	wget ${BASEURL}/$@
@@ -10,6 +10,6 @@ DBNAME=tycho.db
 	gzip $*.csv
 
 $(DBNAME) : $(BASENAME).csv.gz
-	python3 tycho_sqlite.py
+	python3 tycho_sqlite.py -o ${DBNAME}
 
 all: $(DBNAME)
