@@ -45,7 +45,10 @@ CREATE TABLE IF NOT EXISTS location (
   state VARCHAR);
 """)
 cursor.execute("""
-CREATE INDEX loc_state ON location(state);
+CREATE INDEX loc_state_idx ON location(state);
+""")
+cursor.execute("""
+CREATE INDEX loc_city_idx ON location(city);
 """)
 
 cursor.execute("""
@@ -60,7 +63,11 @@ INSERT INTO disease (
 ) VALUES (
   ?
 )'''
-        
+cursor.execute("""
+CREATE INDEX disease_name_idx ON disease(name);
+""")
+
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS casecount (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
