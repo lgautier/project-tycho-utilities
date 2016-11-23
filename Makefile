@@ -3,7 +3,7 @@ BASEURL = http://www.healthdata.gov/sites/default/files
 DBNAME ?= tycho.db
 
 %_0.zip :
-	wget ${BASEURL}/$@
+	wget -q --show-progress ${BASEURL}/$@
 
 %.csv.gz : %_0.zip
 	unzip $< && rm $<
