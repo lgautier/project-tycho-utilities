@@ -24,7 +24,8 @@ parser.add_argument('-o',
                    help='Output file')
 args = parser.parse_args()
 
-input_filename = 'ProjectTycho_Level2_v1.1.0.csv.gz'
+input_tycho_filename = 'ProjectTycho_Level2_v1.1.0.csv.gz'
+
 output_filename = args.o
 
 print('Creating database in %s' % output_filename)
@@ -105,7 +106,7 @@ sql_insertlocation = 'INSERT INTO location (city, state) VALUES (?, ?)'
 sql_insertdisease = 'INSERT INTO disease (name) VALUES (?)'
 PROGRESS = int(10000)
 print('Inserting the data...')
-with gzip.open(input_filename, 'rt') as fh_in:
+with gzip.open(input_tycho_filename, 'rt') as fh_in:
     csv_r = csv.reader(fh_in)
     loc_ids = dict()
     disease_ids = dict()
