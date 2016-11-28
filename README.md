@@ -20,7 +20,7 @@ as the Boston Data Festival 2016
 [repos for the slides](https://github.com/lgautier/odsc-ppda-slides))
 
 A jupyter notebook showing how dplyr and ggplot2 can be used to analyze data
-is included in the directory [notebooks/](notebooks/).
+is included in the directory [notebook/](notebook/).
 
 ## Usage
 
