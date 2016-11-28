@@ -16,11 +16,11 @@ At this point, this is only building an SQLite database from the Level 2 data (d
 
 This repository was initially used in a workshop on polyglot data analysis
 as the Boston Data Festival 2016
-((slides)[http://lgautier.github.io/odsc-ppda-slides/],
-(repos for the slides[https://github.com/lgautier/odsc-ppda-slides]))
+([slides](http://lgautier.github.io/odsc-ppda-slides/),
+[repos for the slides](https://github.com/lgautier/odsc-ppda-slides))
 
 A jupyter notebook showing how dplyr and ggplot2 can be used to analyze data
-is included (notebooks/)[notebooks/].
+is included in the directory [notebooks/](notebooks/).
 
 ## Usage
 
