@@ -73,6 +73,7 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS casecount (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   location_id INTEGER,
+  event TEXT,
   count INTEGER,
   date_from TEXT,
   date_to TEXT,
@@ -89,11 +90,13 @@ sql = '''
 INSERT INTO casecount (
  location_id,
  count,
+ event,
  date_from,
  date_to,
  epiweek,
  disease_id
 ) VALUES (
+  ?,
   ?,
   ?,
   DATE(?),
@@ -118,6 +121,7 @@ with gzip.open(input_tycho_filename, 'rt') as fh_in:
     loc_i = header.index('loc')
     loctype_i = header.index('loc_type')
     disease_i = header.index('disease')
+    event_i = header.index(' event')
     number_i = header.index('number')
     ## epi_week,country,state,loc,loc_type,disease,
     ## event,number,from_date,to_date,url
@@ -130,6 +134,7 @@ with gzip.open(input_tycho_filename, 'rt') as fh_in:
         if (state, city) not in loc_ids:            
             cursor.execute(sql_insertlocation, (city, state))
             loc_ids[(state,city)] = cursor.lastrowid
+        event = row[event_i]
         count = row[number_i]
         datefrom = row[datefrom_i]
         dateto = row[dateto_i]
@@ -141,6 +146,7 @@ with gzip.open(input_tycho_filename, 'rt') as fh_in:
         cursor.execute(sql,
                        (loc_ids[(state, city)],
                         count,
+                        event,
                         datefrom,
                         dateto,
                         epiweek,
